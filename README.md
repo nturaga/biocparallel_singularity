@@ -1,6 +1,10 @@
 Using `BiocParallel::BatchtoolsParam` with a containerized version of Bioconductor for parallel computation on a high performance computer cluster
 ================
 
+Authors: Nitesh Turaga, Ludwig Geistlinger
+
+Acknowledgements: Sean Davis, Martin Morgan, Levi Waldron
+
 ## Why use Bioconductor on Docker?
 
 Containers have become very prominent in Bioinformatics in the last
