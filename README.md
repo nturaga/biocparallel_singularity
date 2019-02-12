@@ -1,11 +1,11 @@
-Using `BiocParallel::BatchtoolsParam` with a containerized version of Bioconductor for parallel computation on a high performance computer cluster
-================
+ Parallel evaluation using `BiocParallel::BatchtoolsParam` in a Bioconductor singularity container on a high performance compute cluster
+==================================================
 
-Authors: Nitesh Turaga, Ludwig Geistlinger
+Authors: Nitesh Turaga (@nturaga), Ludwig Geistlinger(@lgeistlinger)
 
-Acknowledgements: Sean Davis, Martin Morgan, Levi Waldron
+Acknowledgements: Sean Davis, Martin Morgan, Levi Waldron, and Bioconductor Team
 
-## Why use Bioconductor on Docker?
+## Bioconductor on Docker
 
 Containers have become very prominent in Bioinformatics in the last
 3-4 years for many reasons, most importantly, **reproducibility** and
@@ -14,7 +14,7 @@ source R packages for genomics has adopted containerization of
 packages along with the appropriate R version.
 
 Reproducibility: The exact software installed on every container can
-be reproduced with a Dockerfile, which can be easily distributed. In
+be reproduced with a **Dockerfile**, and these can be easily distributed. In
 terms of Bioconductor containers, the version of R and each
 Bioconductor package installed can be reproduced easily.
 
@@ -24,26 +24,30 @@ containers. The version of R and Bioconductor installed on the
 container can be totally independent of all other versions. This
 allows easy usage of multiple versions of R and Bioconductor packages.
 
-## Where to get Bioconductor Docker images?
+## Where are these Bioconductor Docker images?
 
-Bioconductor has docker images hosted on Docker Hub, located at https://cloud.docker.com/u/bioconductor/repository/list.
+Bioconductor provides Docker images in a couple of ways currently,
 
-The location on the website for background and instructions on how to
-use them is located on the Bioconductor website
-https://bioconductor.org/help/docker/.
+* **Bioconductor docker images** hosted on Docker Hub, located at https://cloud.docker.com/u/bioconductor/repository/list. The website has information and instructions on how to
+use them https://bioconductor.org/help/docker/. The Dockerfile(s) for each of these containers is located at https://github.com/Bioconductor/bioc_docker/tree/master/out. These are provided directly by the Bioconductor team and are categorized into,
 
-The Dockerfile(s) for each of the Container repo:
-https://github.com/Bioconductor/bioc_docker
+ - **core** (contains core Bioconductor packages),
+ - **base** (`BiocManager` comes with it, you have to install all other Bioconductor packages yourself),
+ - and a couple of other flavors, **protmetcore** (proteomics and metabolomics) and  **metabolomics** (additional metabolomics packages).
 
-It is possible to build on top of these default containers for a
-customized Bioconductor container as e.g. described here:
-https://github.com/waldronlab/bioconductor_devel.
+ It is possible to build on top of these default containers for a
+ customized Bioconductor container. A very good example is given at this link https://github.com/waldronlab/bioconductor_devel.
 
+* **Bioconda** (https://bioconda.github.io/) provides the **BioContainers**(https://biocontainers.pro/registry/#/). Bioconda provides a container for each individual package in Bioconductor under the BioContainer umbrella in https://quay.io.
+
+ - They also provide additional "Multi package" container, where you can combine multiple bioconda packages into one container. You may choose a Bioconductor package combination of your desire, and build a container with them. (https://biocontainers.pro/registry/#/multipackage)
+
+<!-- FIXME
 Let’s assume in the following, we have a github repository named
 bioconductor_devel that contains as a minimum requirement a Dockerfile
 with the following instruction line
 
-FROM bioconductor/devel_base2
+FROM bioconductor/devel_base2 -->
 
 
 ## What is a Singularity container and how do I turn my docker image into a Singularity container?
