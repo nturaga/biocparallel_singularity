@@ -28,7 +28,7 @@ allows easy usage of multiple versions of R and Bioconductor packages.
 
 Bioconductor provides Docker images in a couple of ways currently,
 
-* **Bioconductor docker images** hosted on Docker Hub, located at https://cloud.docker.com/u/bioconductor/repository/list. The website has information and instructions on how to
+1. **Bioconductor docker images** hosted on Docker Hub, located at https://cloud.docker.com/u/bioconductor/repository/list. The website has information and instructions on how to
 use them https://bioconductor.org/help/docker/. The Dockerfile(s) for each of these containers is located at https://github.com/Bioconductor/bioc_docker/tree/master/out. These are provided directly by the Bioconductor team and are categorized into,
 
  - **core** (contains core Bioconductor packages),
@@ -38,7 +38,7 @@ use them https://bioconductor.org/help/docker/. The Dockerfile(s) for each of th
  It is possible to build on top of these default containers for a
  customized Bioconductor container. A very good example is given at this link https://github.com/waldronlab/bioconductor_devel.
 
-* **Bioconda** (https://bioconda.github.io/) provides the **BioContainers**(https://biocontainers.pro/registry/#/). Bioconda provides a container for each individual package in Bioconductor under the BioContainer umbrella in https://quay.io.
+1. **Bioconda** (https://bioconda.github.io/) provides the **BioContainers**(https://biocontainers.pro/registry/#/). Bioconda provides a container for each individual package in Bioconductor under the BioContainer umbrella in https://quay.io.
 
  - They also provide additional "Multi package" container, where you can combine multiple bioconda packages into one container. You may choose a Bioconductor package combination of your desire, and build a container with them. (https://biocontainers.pro/registry/#/multipackage)
 
