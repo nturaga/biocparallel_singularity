@@ -145,7 +145,7 @@ We assume in the following that the cluster runs slurm, but similar instructions
 1. Check first that you can list jobs registered for execution on the cluster via squeue (or alike for other cluster environments).
 2. Create a basic test script that we name slurm-test.sh which executes a simple R command via the singularity-wrapped R on a compute node of the cluster
 
-```shell
+```bash
 #!/bin/bash
 
 #SBATCH -p <queue>
@@ -168,7 +168,7 @@ Note that expressions in angle brackets have to be replaced accordingly.  And th
 sbatch slurm-test.sh
 ```
 
-Make sure that an output file named as specified in the script is created and that it contains as expected the R startup message and the “Hello World” message.
+Make sure that an output file named as specified in the script is created and that it contains as expected the R startup message and the "Hello World” message.
 
 
 ## How do I invoke the singularity container through BiocParallel to execute jobs in parallel on a high performance computer cluster?
@@ -209,10 +209,15 @@ We use the template file to configure a `BatchtoolsParam` in the cluster’s bas
 ```R
 library(BiocParallel)
 library(batchtools)
-param <- BatchtoolsParam(workers = 2, cluster = "slurm" ,
-								template="slurm-simple.tmpl")
+param <- BatchtoolsParam(
+    workers = 2, 
+    cluster = "slurm",
+	template="slurm-simple.tmpl"
+)
 
-and supply the param to bplapply for parallel execution of a simple function that returns the hostname of the compute nodes for testing purpose.
+## and supply the param to bplapply for parallel execution
+## of a simple function that returns the hostname of the
+## compute nodes for testing purpose.
 
 test_cluster <- function(n) system2(“hostname”)
 bplapply(1:20, test_cluster, BPPARAM = param)

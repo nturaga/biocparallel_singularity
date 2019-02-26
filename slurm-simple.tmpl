@@ -1,0 +1,16 @@
+#!/bin/bash
+
+<%
+# relative paths are not handled well by Slurm
+log.file = fs::path_expand(log.file)
+-%>
+
+#SBATCH -p <queue>
+#SBATCH --job-name=<%= job.name %>
+#SBATCH --output=<%= log.file %>
+#SBATCH --error=<%= log.file %>
+
+module load singularity
+
+## Modify this line
+singularity shell <path-to-image>/<username>-bioconductor_devel-master-latest.simg R -e 'batchtools::doJobCollection("<%= uri %>")'
