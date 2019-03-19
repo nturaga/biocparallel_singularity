@@ -1,0 +1,3 @@
+[submodule "bioconductor_full"]
+	path = bioconductor_full
+	url = git@github.com:nturaga/bioconductor_full

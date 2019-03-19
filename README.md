@@ -5,15 +5,15 @@ Parallel evaluation using `BiocParallel::BatchtoolsParam` in a singularity conta
 
 Authors: Nitesh Turaga (@nturaga), Ludwig Geistlinger(@lgeistlinger)
 
-Acknowledgements: Sean Davis(@seandavis12), Martin Morgan, Levi Waldron( @LeviWaldron1), and Bioconductor Team (@Bioconductor)
+Acknowledgements: Sean Davis(@seandavi), Martin Morgan(@mtmorgan), Levi Waldron( @lwaldron), and Bioconductor Team ([@Bioconductor](<https://github.com/Bioconductor>))
 
 [TOC]
 
-## Bioconductor on Docker
+## Why Bioconductor on Docker?
 
-Containers have become very prominent in Bioinformatics in the last 3-4 years for many reasons, most importantly, **reproducibility** and **isolation**. Bioconductor, being the largest platform for open source R packages for genomics has adopted containerization of packages along with the appropriate R version.
+Containers have become very prominent in Bioinformatics in the last couple of years for many reasons, most importantly, **reproducibility** and **isolation**. Bioconductor, being the largest platform for open source R packages for genomics has adopted containerization of packages along with the appropriate R version. 
 
-* *Reproducibility*: The exact software installed on every container can be reproduced with a **Dockerfile**, and these can be easily distributed. In terms of Bioconductor containers, the version of R and each Bioconductor package installed can be reproduced easily.
+* *Reproducibility*: The exact software installed on every container can be reproduced with a **Dockerfile**, and these can be easily distributed. In terms of Bioconductor containers, the version of R and each Bioconductor package installed are always the same and lead to reproducible analysis.
 
 * *Isolation*: Software installed within a container will not affect installations or configurations on your host machine, or on any other containers. The version of R and Bioconductor installed on the container can be totally independent of all other versions. This allows easy usage of multiple versions of R and Bioconductor packages.
 
@@ -50,11 +50,11 @@ RUN R -e "BiocManager::install(c(<my_list_of_packages))"
 
 ## What is a Singularity container and how do I turn my docker image into a Singularity container?
 
-Singularity Hub is an online registry for images. This means that you can connect a GitHub repo containing a build specification file to this website, and the image is going to build for you automatically, and be available programmatically (similar to Docker hub).
+[Singularity Hub](<https://www.singularity-hub.org/>) is an online registry for images. Users can connect a GitHub account, and specific repositories containing a build specification file to this singularity hub, and the image is going to build for you automatically, and be available programmatically (similar to Docker hub).
 
 Remember, Singularity Hub needs authorization to access your github repository, where the Dockerfile is located.
 
-Add a Singularity file to your github repo which corresponds to the `Dockerfile` to tell `shub` how to build the image see https://singularity.lbl.gov/docs-docker for instructions on how to specify this file.
+Add a **Singularity** file to your github repo which corresponds to the `Dockerfile` to tell `shub` how to build the image see https://singularity.lbl.gov/docs-docker for instructions on how to specify this file.
 
 The Singularity file does not need to be more than a simple:
 
